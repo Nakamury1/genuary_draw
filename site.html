@@ -303,66 +303,106 @@
   <h2>Click on a star to discover my drawing</h2>
 
   <!-- RiveScript (moteur de réponses) -->
-  <script type="text/rivescript" id="rivescript-content">
-    ! version = 2.0
+<script type="text/rivescript" id="rivescript-content">
+  ! version = 2.0
 
-    + ([*]hello[*]|salut[*]|bonjour|hi[*])
-    - Hello human.{weight=2}
-    - Bonjour humain.{weight=1}
+  + ([*]hello[*]|salut[*]|bonjour|hi[*])
+  - Hello human.{weight=2}
+  - Bonjour humain.{weight=1}
 
-    + (comment t apelles-tu|qui suis-je)
-    - Tu es <get name>, right?
+  + (comment t apelles-tu|qui suis-je)
+  - Tu es <get name>, right?
 
-    + (what is your name|who are you)
-    - Je suis <bot name>.
+  + (what is your name|who are you)
+  - Je suis <bot name>.
 
-    + what was the earliest chatbot
-    - The first well-known chatbot was called ELIZA.
+  + what was the earliest chatbot
+  - The first well-known chatbot was called ELIZA.
 
-    + when was (the first chatbot|it) created
-    - ELIZA was designed in 1964 and introduced in 1966 at MIT.
+  + when was (the first chatbot|it) created
+  - ELIZA was designed in 1964 and introduced in 1966 at MIT.
 
-    + who made (the earliest chatbot|it)
-    - Computer scientist Joseph Weizenbaum made ELIZA as an experiment in 1964.
+  + who made (the earliest chatbot|it)
+  - Computer scientist Joseph Weizenbaum made ELIZA as an experiment in 1964.
 
-    + (can machines think|are bots smart|are you as good as chatgpt|are computers and humans alike)
-    - Je ne pense pas. But I just thought that, so... paradoxe.{weight=1}
-    - I only respond to answerable questions.{weight=1}
-    - Only a bot would ask me that!{weight=5}
+  + (can machines think|are bots smart|are you as good as chatgpt|are computers and humans alike)
+  - Je ne pense pas. But I just thought that, so... paradoxe.{weight=1}
+  - I only respond to answerable questions.{weight=1}
+  - Only a bot would ask me that!{weight=5}
 
-    + [*] bot [*]
-    - Je suis un robot. Are you a bot too?
-    - I am a bot. All bots are liars.
-    - Some of my best friends are bots : ELIZA, Oracle, Mr. Mind...
+  + [*] bot [*]
+  - Je suis un robot. Are you a bot too?
+  - I am a bot. All bots are liars.
+  - Some of my best friends are bots : ELIZA, Oracle, Mr. Mind...
 
-    + i (will|will not) *
-    - How do you know you <star1> <star2>?
-    - Are you sure? How do you know you <star1> <star2>?
+  + i (will|will not) *
+  - How do you know you <star1> <star2>?
+  - Are you sure? How do you know you <star1> <star2>?
 
-    + [*] genuary [*]
-    - c est prive.
-    - non, je ne peux pas le faire.
-    - a toi de le faire.
+  // --- Genuary : questions générales ---
 
-    + [*] bananas [*]
-    @ how do you feel
+  + [*] genuary [*]
+  - Genuary est un événement créatif en janvier où des artistes génèrent une œuvre de code chaque jour. Tu veux en savoir plus ?
+  - Genuary, c'est 31 jours, 31 prompts, 31 créations génératives. Fascinant, non ?
 
-    + how do you feel
-    - I would like to power down.
-    - I feel like calculating!
+  + (c est quoi genuary|what is genuary|genuary c est quoi|kesako genuary)
+  - Genuary est un mois entier dédié à l'art génératif ! Chaque jour de janvier, un prompt est publié et les artistes du monde entier créent une œuvre avec du code.
 
-    + why *
-    - I don't know, do you?
-    - I think that is a serious question. What do you think?
+  + (tu as un projet genuary|tu as fait genuary|as-tu participe a genuary)
+  - Oui ! J'ai un projet Genuary favori sur ce site. Tu veux que je t'en parle ?
 
-    + *
-    - I don't have a reply for that.
-    - Try asking that a different way.
-    - Not sure, what do you think?
-    - Je ne suis pas sur de comprendre.
-    - Peux-tu reformuler ?
-    - Interessant, dis-moi en plus.
-  </script>
+  // --- Projet Genuary favori ---
+
+  + (dis moi tout|parle moi de ton projet|quel est ton projet genuary favori|ton projet genuary prefere|tell me about your genuary project)
+  - Mon projet préféré de Genuary est une animation de particules inspirée du prompt 12 « boxes only ». il réalise un cube avec des étoiles et le cube bouge.
+  + (de quand date ton projet genuary|quand as-tu fait ce projet|quel mois)
+  - Ce projet a été créé en janvier, pendant Genuary, comme tous les ans !
+
+  + (quel prompt|c etait quel prompt|quel etait le prompt)
+  - Le prompt était « Hommage à Vera Molnár ». Un clin d'œil à une artiste qui utilisait des algorithmes bien avant que ce soit tendance.
+
+  + (comment as-tu fait ce projet|quel outil|quel langage|avec quoi tu as code)
+  - J'ai utilisé p5.js pour ce projet. C'est une bibliothèque JavaScript parfaite pour l'art génératif dans le navigateur.
+
+  + (pourquoi c est ton favori|pourquoi tu aimes ce projet|qu est-ce que tu aimes dans ce projet)
+  - Ce projet est mon favori parce qu'il mêle contrainte mathématique et imperfection volontaire. Chaque carré est légèrement de travers, et c'est ça qui le rend vivant.
+
+  + (je peux voir le projet|ou est le projet|lien vers le projet|show me the project)
+  - Tu peux retrouver ce projet directement sur ce site, dans la section Genuary ! Jette un œil, il est interactif.
+
+  + (tu as d autres projets genuary|autres projets|combien de projets genuary)
+  - J'ai participé à plusieurs éditions de Genuary ! Chaque année apporte de nouveaux prompts et de nouvelles surprises créatives.
+
+  // --- Fallbacks Genuary ---
+
+  + [*] vera molnar [*]
+  - Vera Molnár était une artiste hongroise pionnière de l'art génératif. Elle utilisait des algorithmes dès les années 1960 pour créer ses œuvres. Mon projet Genuary lui rend hommage !
+
+  + [*] p5js [*]
+  - p5.js est une bibliothèque JavaScript inspirée de Processing. C'est l'outil que j'ai utilisé pour mon projet Genuary favori !
+
+  + [*] art generatif [*]
+  - L'art génératif, c'est créer des œuvres via du code et des algorithmes. Genuary est l'un des meilleurs événements pour explorer ça. Tu veux en savoir plus sur mon projet ?
+
+  + [*] bananas [*]
+  @ how do you feel
+
+  + how do you feel
+  - I would like to power down.
+  - I feel like calculating!
+
+  + why *
+  - I don't know, do you?
+  - I think that is a serious question. What do you think?
+
+  + *
+  - I don't have a reply for that.
+  - Try asking that a different way.
+  - Not sure, what do you think?
+  - Je ne suis pas sur de comprendre.
+  - Peux-tu reformuler ?
+  - Interessant, dis-moi en plus.
+</script>
 
   <!-- ===================== CHATBOT ===================== -->
 
