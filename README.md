@@ -1,1 +1,1 @@
-Pour que cela fonctionne correctement, il doit être ajouté dans un environnement incluant p5.js.
+Pour que cela fonctionne correctement, il doit être ajouté dans le dossier ./p5.js/sketches
