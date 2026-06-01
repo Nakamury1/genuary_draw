@@ -1,0 +1,120 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+      margin: 0;
+      overflow: hidden;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.15), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(168, 85, 247, 0.15), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(34, 197, 94, 0.12), transparent 40%),
+        linear-gradient(135deg, #05060a, #0b1020, #0f172a);
+    }
+
+canvas {
+  display: block;
+}
+
+#space {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vw;
+  height: 80vh;
+  max-width: 1200px;
+  max-height: 800px;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+#sketch-root {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  display: block;
+}
+
+#sketch-root canvas { display: block; }
+
+
+/* Note above canvas */
+.sketch-note {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  white-space: nowrap;
+  z-index: 2;
+  margin: 0;
+  
+  /* Effet chrome : reflet lumineux */
+  background: linear-gradient(
+    90deg,
+    #1a1a1a   0%,
+    #777      15%,
+    #ffffff   30%,
+    #cccccc   42%,
+    #444      52%,
+    #ffffff   63%,
+    #888      78%,
+    #1a1a1a  100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  
+  animation: chrome-slide 20s linear infinite;
+  
+  filter:
+    drop-shadow(0 0 8px rgba(180, 200, 255, 0.35))
+    drop-shadow(0 3px 5px rgba(0, 0, 0, 0.9));
+  pointer-events: none;
+}
+
+@keyframes chrome-slide {
+  0%   { background-position: 0%   center; }
+  100% { background-position: 100% center; }
+}
+
+/* Return button */
+.return-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 999;
+  padding: 10px 16px;
+  font-size: 14px;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.return-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 15px rgba(180, 200, 255, 0.4);
+  transform: translateY(-2px);
+}

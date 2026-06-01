@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script src="../../../lib/p5js/p5.min.js"></script>
+    <script src="../../../lib/v3ga/dessins_geometriques/init_trace.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+</head>
+<body>
+<a href="../../index.html" class="return-btn" title="Retour à l'index">← Back</a>
+    <canvas id="space"></canvas>
+    <div class="sketch-note"> GENUARY PROMPT 28 = No libraries, no canvas, only HTML elements.</div>
+    <main id="sketch-root">
+    </main>
+<svg id="svg" width="480" height="480" viewBox="0 0 480 480">
+  <path id="star" fill="none" stroke="white" stroke-width="2"/>
+</svg>
+
+  <script src="sketch.js"></script>
+<script>
+/* -----------------------------
+   PARAMÈTRES (identiques)
+------------------------------ */
+let DESSIN = 7; // [7,8,9,10,11,12]
+
+let NP = 480;
+let PI = Math.PI;
+let K = 5, H = 3;
+let CX = NP / 2, CY = NP / 2;
+let R = NP * 0.45;
+let AD = PI / 2;
+
+if (DESSIN == 8) {
+  K = 7;
+} else if (DESSIN == 9) {
+  K = 20; H = 9;
+} else if (DESSIN == 10) {
+  K = 20; H = 7;
+} else if (DESSIN == 11) {
+  K = 51; H = 20;
+} else if (DESSIN == 12) {
+  K = 51; H = 25;
+}
+
+/* -----------------------------
+   GÉNÉRATION DU PATH SVG
+------------------------------ */
+let d = "";
+
+for (let I = 0; I < K; I++) {
+  let angle = 2 * I * H * PI / K + AD;
+  let X = Math.round(CX + R * Math.cos(angle));
+  let Y = Math.round(CY + R * Math.sin(angle));
+
+  if (I === 0) {
+    d += `M ${X} ${Y} `;
+  } else {
+    d += `L ${X} ${Y} `;
+  }
+}
+
+d += "Z"; // fermer la forme
+
+document.getElementById("star").setAttribute("d", d);
+</script>
+<script>
+        /* ---- Canvas : fond étoilé ---- */
+
+    const canvas = document.getElementById("space")
+    const ctx    = canvas.getContext("2d")
+
+    canvas.width  = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const bgStars = []
+
+    for (let i = 0; i < 120; i++) {
+      bgStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5,
+        v: Math.random() * 0.3 + 0.1
+      })
+    }
+
+    function drawSpace() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = "white"
+
+      bgStars.forEach(s => {
+        s.y += s.v
+        if (s.y > canvas.height) {
+          s.y = 0
+          s.x = Math.random() * canvas.width
+        }
+
+        ctx.globalAlpha = Math.random() * 0.8 + 0.2
+        ctx.beginPath()
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
+        ctx.fill()
+      })
+
+      requestAnimationFrame(drawSpace)
+    }
+
+    drawSpace()
+    </script>
+</body>
+</html>

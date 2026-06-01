@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="../../../lib/p5js/p5.min.js"></script>
+    <script src="../../../lib/v3ga/dessins_geometriques/init_trace.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="utf-8" />
+
+  </head>
+    <body>
+    <a href="../../index.html" class="return-btn" title="Retour à l'index">← Back</a>
+    <canvas id="space"></canvas>
+    <div class="sketch-note">GENUARY PROMPT 7 = Boolean algebra. Get inspired by Boolean algebra, in any way.</div>
+    <main id="sketch-root">
+    </main>
+    <script src="sketch.js"></script>
+        <script>
+        /* ---- Canvas : fond étoilé ---- */
+
+    const canvas = document.getElementById("space")
+    const ctx    = canvas.getContext("2d")
+
+    canvas.width  = window.innerWidth
+    canvas.height = window.innerHeight
+
+    const bgStars = []
+
+    for (let i = 0; i < 120; i++) {
+      bgStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5,
+        v: Math.random() * 0.3 + 0.1
+      })
+    }
+
+    function drawSpace() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = "white"
+
+      bgStars.forEach(s => {
+        s.y += s.v
+        if (s.y > canvas.height) {
+          s.y = 0
+          s.x = Math.random() * canvas.width
+        }
+
+        ctx.globalAlpha = Math.random() * 0.8 + 0.2
+        ctx.beginPath()
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
+        ctx.fill()
+      })
+
+      requestAnimationFrame(drawSpace)
+    }
+
+    drawSpace()
+    </script>
+  </body>
+  </body>
+</html>
